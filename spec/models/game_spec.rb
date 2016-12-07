@@ -44,4 +44,11 @@ describe Game do
     it "can call ships"
 
   end
+
+  describe "#validations" do
+    it "cannot save if invalid" do
+      invalid_game = Game.new()
+      expect(invalid_game.save).to be false
+    end
+  end
 end
