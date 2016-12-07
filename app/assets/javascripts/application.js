@@ -30,7 +30,7 @@ $(document).on('ready page:load', function () {
           $("form").prepend("<h1>HEY</h1>")
           });
         })
-var doStuff = function () {
+var updateShots = function () {
   $.ajax({
     url: "/shots",
     method: "GET",
@@ -42,6 +42,6 @@ var doStuff = function () {
     $("#ok").text(data.hey)
     });
 };
-setInterval(doStuff, 1000);
+setInterval(updateShots, 1000);
 
 });
