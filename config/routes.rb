@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root "users#show"
+  root "sessions#new"
+   resources :games
   resources :sessions
   resources :users
-  resources :games
+  resources :shots, only: [:create, :index]
 end

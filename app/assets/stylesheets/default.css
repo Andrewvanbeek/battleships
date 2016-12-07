@@ -3,6 +3,12 @@
 }
 
 table td {
-  padding: 40px;
+  padding: 10px;
+  background-color: #5bc0de;
+  background-image: url("/images/ship.png");
 }
 
+.hit {
+
+  color: red;
+}
