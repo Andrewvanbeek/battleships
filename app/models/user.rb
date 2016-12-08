@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-	def total_win_count
+	def total_wins
 	 	user_id = self.id
 	 	wins = 0
 	 	self.games.each do |game|
@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
 
 		# self.games.where(winner_id: self.id)
 
-	def total_loss_count
-		self.games.length - self.games.user_total_win_count
+	def total_losses
+		self.games.length - self.games.user_total_wins
 	end 
 
 	def total_shots_fired
