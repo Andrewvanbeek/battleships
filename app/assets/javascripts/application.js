@@ -66,6 +66,51 @@ setInterval(updateShots, 1000);
   console.log(value)
   if(value === "carrier"){
     $("#player_1 td").on("click", function(e){
+      var size = 5
+      e.preventDefault();
+      var spot = $(this)
+      var row = $(this).closest("tr")
+      var rowTableDatas = $(row).children()
+      var xCoord = $(row).attr("value")
+      var yCoord = $(rowTableDatas).index(spot)
+      var endSpot = spot.next().next().next().next()
+      $("#player_1 td").removeClass("placer")
+      $(endSpot).addClass("placer")
+      spot.addClass("placer")
+      spot.nextUntil(endSpot).addClass("placer")
+      var shipSize = $("#player_1 .placer").length
+      var data = {x_coord: xCoord, y_coord: yCoord, size: 5}
+      if(shipSize === 5){
+        spot.on("dblclick", function(e){
+          e.preventDefault();
+            $.ajax({
+              url: '/ships',
+              method: "POST",
+              data: data,
+              })
+             .fail(function() {
+            })
+            .done(function(data) {
+              });
+
+        })
+
+
+
+
+      }
+
+      else {
+        alert("destroyer has to be 5 spaces")
+      }
+
+    })
+
+
+  }
+
+  else if(value === "destroyer") {
+       $("#player_1 td").on("click", function(e){
       e.preventDefault();
       var spot = $(this)
       var row = $(this).closest("tr")
@@ -77,11 +122,27 @@ setInterval(updateShots, 1000);
     })
 
 
+
+
   }
 
-  else if(value === "destroyer") {}
+  else if(value === "destroyer") {
+       $("#player_1 td").on("click", function(e){
+      e.preventDefault();
+      var spot = $(this)
+      var row = $(this).closest("tr")
+      var rowTableDatas = $(row).children()
+      console.log(rowTableDatas)
+      var xCoord = $(row).attr("value")
+      var yCoord = $(rowTableDatas).index(spot)
+      var data = {classification: "carrier", size: 5, }
+    })
 
-  else if(value === "destroyer") {}
+
+
+
+
+  }
 
 })
 

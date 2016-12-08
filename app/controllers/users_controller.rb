@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update, :show, :destroy]
 
   def show
+    @game = Game.new
   end
 
   def new

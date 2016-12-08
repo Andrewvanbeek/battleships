@@ -1,3 +1,8 @@
 <div class= "new-game jumbotron">
-  <%= link_to "New Game", new_game_path %>
+  <%= form_for @game do |f| %>
+  <%= f.submit %>
+<% end %>
+
+<% link_to "List of games to Join", games_path%>
+
 </div>

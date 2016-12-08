@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 
   def index
+    @games = Game.all.find_all {|game| game.ready_to_join == true}
   end
 
   def new
@@ -15,8 +16,11 @@ class GamesController < ApplicationController
     render :new
   end
 
+
+
   def create
-    @game = Game.new(game_params)
+    @user = User.find_by(id: session[:user_id])
+    @game = Game.new(player1_id: @user.id)
     if @game.save
       redirect_to @game
     else
@@ -26,6 +30,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    @ship_1 = Ship.new
+    @shot = Shot.new
     @game = Game.find(params[:id])
 
     render :show
@@ -34,7 +40,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:player1_id, :player2_id)
+    params.require(:game).permit(:player1_id)
   end
 end
 
