@@ -25,7 +25,7 @@ describe User do
     let!(:shot_1) {Shot.create(user_id: user_1.id, game_id: 3, hit: true)}
     let!(:shot_2) {Shot.create(user_id: user_1.id, game_id: 3, hit: false)}
 
-    describe "last game" do 
+    describe "last game" do
       it 'has a game won/lost status' do
         expect(user_1.last_game_status).to eq "Lost"
       end
@@ -43,7 +43,7 @@ describe User do
       end
     end
 
-    describe "global" do 
+    describe "global" do
       it 'has a total_wins value' do
         expect(user_1.total_wins).to eq 2
       end

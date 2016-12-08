@@ -71,11 +71,11 @@ describe UsersController do
         expect(assigns(:user)).to eq(user)
       end
 
-      it "renders the :show template"
-        # session[:user_id] = user.id
-        # get :edit, {id: user.id}
-        # expect(response).to render_template(:edit)
-
+      it "renders the :show template" do
+        session[:user_id] = user.id
+        get :edit, {id: user.id}
+        expect(response).to render_template(:edit)
+      end
     end
 
     context "When user is not logged in" do
@@ -89,10 +89,10 @@ describe UsersController do
         expect(assigns(:user)).to eq(user)
       end
 
-      it "redirects the to sessions/new"
-        # get :edit, {id: user.id}
-        # expect(response).to redirect_to new_session_path
-
+      it "redirects the to sessions/new" do
+        get :edit, {id: user.id}
+        expect(response).to redirect_to new_session_path
+      end
     end
   end
 
@@ -140,7 +140,18 @@ describe UsersController do
         expect(response).to render_template(:new)
       end
     end
+
+    describe "#DELETE destroy" do
+      it "responds with status code 302" do
+        delete :destroy, {id: user.id}
+        expect(response).to have_http_status 302
+      end
+
+      it "redirects to the homepage" do
+        session[:user_id] = user.id
+        delete :destroy, {id: user.id}
+        expect(response).to redirect_to root_path
+      end
+    end
   end
-
-
 end
