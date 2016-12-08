@@ -1,0 +1,30 @@
+<div class="container">
+
+	<h2>User Stats:</h2>
+
+	<div id="game-stats">
+		<h3>Last Game Played:</h3>
+		
+		<li>Result: <%= current_user.last_game_status %> </li>
+		<li>Total shots fired: <%= current_user.game_shots_fired %></li>
+		<li>Shots fired by you: <%= current_user.game_you_shots_fired %></li>
+		<li>Shots fired by opponent: <%= current_user.game_opp_shots_fired %></li>
+		<li>Your ships sunk: TBD</li>
+		<li>Opponent ships sunk: TBD</li>
+
+
+	</div>
+
+	<div id="overall-stats">
+		<h3>Overall:</h3>
+		
+		<li>Total games played: <%= current_user.games.length %> </li>
+		<li>Total wins: <%= current_user.total_wins%> </li> 
+		<li>Total losses: <%= current_user.total_losses%> </li> 
+		<li>Total shots fired: <%= current_user.total_shots_fired %> </li>
+		<li>Total hits: <%= current_user.total_hits %> </li>
+		<li>Total misses: <%= current_user.total_misses %> </li>
+
+	</div>
+
+</div>
