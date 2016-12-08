@@ -30,10 +30,10 @@ $(document).on('ready page:load', function () {
       $.ajax({
         url: '/shots',
         method: "POST",
-        data: data,
+        data: data
       }) .fail(function() {
       }) .done(function(data) {
-
+        $shot.addClass();
       });
   })
 

@@ -7,6 +7,4 @@ class ShipsController < ApplicationController
   end
 
   private
-
-
 end
