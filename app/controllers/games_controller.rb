@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    @shot = Shot.new
     @game = Game.new
 
     render :new
@@ -31,3 +32,4 @@ class GamesController < ApplicationController
     params.require(:game).permit(:player1_id, :player2_id)
   end
 end
+

@@ -1,0 +1,14 @@
+.jumbotron {
+  width: 100%;
+}
+
+table td {
+  padding: 10px;
+  background-color: #5bc0de;
+  background-image: url("/images/ship.png");
+}
+
+.hit {
+
+  color: red;
+}
