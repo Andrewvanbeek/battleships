@@ -22,7 +22,7 @@ describe User do
     let!(:game_1) {Game.create(player1_id: user_1.id, player2_id: 2, winner_id: user_1.id)}
     let!(:game_2) {Game.create(player1_id: user_1.id, player2_id: 2, winner_id: user_1.id)}
     let!(:game_3) {Game.create(player1_id: user_1.id, player2_id: 2, winner_id: 2)}
-    
+
     it 'has a total_wins value' do
       expect(user_1.total_wins).to eq 2
     end

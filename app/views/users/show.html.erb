@@ -8,7 +8,7 @@
 </div>
 
 <%= link_to "Update Profile", edit_user_path(current_user) %>
-<%= link_to "Delete Profile", @user, data: {confirm: "You sure?"} %>
+<%= link_to "Delete Profile", @user, method: :delete, data: {confirm: "You sure?"} %>
 
 <h2>User Profile Page</h2>
 
