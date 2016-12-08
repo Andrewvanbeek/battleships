@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     if session[:user_id] != params[:id].to_i
       redirect_to new_session_path
     end
+    @game = Game.new
   end
 
   def new
