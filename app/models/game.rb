@@ -14,4 +14,16 @@ class Game < ActiveRecord::Base
 
 
 
+  def player1_ships
+    self.player1.ships.where(game_id: self.id)
+  end
+
+  def player2_ships
+    self.player2.ships.where(game_id: self.id)
+  end
+
+  def ready_to_start
+    self.player1_ships.length == 5 && self.player2_ships.length == 5
+  end
+
 end
