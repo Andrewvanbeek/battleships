@@ -19,12 +19,16 @@ class GamesController < ApplicationController
 
 
   def create
+    puts session[:user_id]
     @user = User.find_by(id: session[:user_id])
     @game = Game.new(player1_id: @user.id)
     if @game.save
+      puts "IT SAVED!"
       redirect_to @game
     else
-      render :new
+      puts "$$$$$$$$$$$$$$"
+      p @game.errors.full_messages
+      render :index
     end
 
   end

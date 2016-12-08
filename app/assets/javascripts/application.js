@@ -35,13 +35,16 @@ var updateShots = function () {
     method: "GET",
     data: {param1: 'value1'},
     })
-   .fail(function() {
+  .fail(function() {
+    setTimeout(updateShots, 100);
   })
   .done(function(data) {
     $("#ok").text(data.hey)
-    });
+    setTimeout(updateShots, 1000);
+  });
+
 };
-setInterval(updateShots, 1000);
+setTimeout(updateShots, 1000);
 
 
 
