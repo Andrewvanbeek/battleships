@@ -27,7 +27,6 @@ $(document).on('ready page:load', function () {
          .fail(function() {
         })
         .done(function(data) {
-          $("form").prepend("<h1>HEY</h1>")
           });
         })
 var updateShots = function () {
@@ -43,5 +42,45 @@ var updateShots = function () {
     });
 };
 setInterval(updateShots, 1000);
+
+
+
+});
+
+  // create_table :ships do |t|
+  //     t.string :classification, null: false
+  //     t.integer :size, null: false
+  //     t.integer :x_coord, null: false
+  //     t.integer :y_coord, null: false
+  //     t.integer :hit_count, default: 0
+  //     t.integer :game_id, null: false
+  //     t.integer :user_id, null: false
+  //     t.integer :orientation
+
+ $( document ).ready(function() {
+  $(".new_ship").on("submit", function(e){
+  e.preventDefault();
+  var newShipForm = $(this)
+  var value = newShipForm.find("input")
+  var value = $(value[2]).attr("value")
+  console.log(value)
+  if(value === "carrier"){
+    $("#player_1 td").on("click", function(e){
+      e.preventDefault();
+      var spot = $(this)
+      var row = $(this).closest("tr")
+      var xCoord = $(row).attr("value"))
+      var
+      var data = {classification: "carrier", size: 5, }
+    })
+
+
+  }
+
+  else if(value === "destroyer") {}
+
+  else if(value === "destroyer") {}
+
+})
 
 });

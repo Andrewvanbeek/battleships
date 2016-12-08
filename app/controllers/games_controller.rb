@@ -4,6 +4,11 @@ class GamesController < ApplicationController
   end
 
   def new
+    @ship_1 = Ship.new
+    # @ship_2 = Ship.new
+    # @ship_3 = Ship.new
+    # @ship_4 = Ship.new
+    # @ship_5 = Ship.new
     @shot = Shot.new
     @game = Game.new
 

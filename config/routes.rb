@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :games, :except => [:edit, :update, :destroy]
   resources :sessions, only: [:new, :create]
   resources :shots, only: [:create, :index]
+  resources :ships
   delete "/logout" => "sessions#destroy"
 end
