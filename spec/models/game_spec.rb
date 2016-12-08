@@ -39,9 +39,15 @@ describe Game do
       expect(game.winner.username).to eq "A"
     end
 
-    it "can call shots"
+    it "can call shots" do
+      empty_arr = []
+      expect(game.shots).to eq empty_arr
+    end
 
-    it "can call ships"
+    it "can call ships" do
+      empty_arr = []
+      expect(game.ships).to eq empty_arr
+    end
 
   end
 
@@ -51,4 +57,15 @@ describe Game do
       expect(invalid_game.save).to be false
     end
   end
+
+  # describe "#players_ready" do
+  #   it "passes true when there are two players set to the game" do
+  #     expect(game.players_ready).to be true
+  #   end
+
+  #   it "passes false when there is only 1 player in game" do
+  #     game2 = Game.new(player1_id: a.id)
+  #     expect(game2.players_ready).to be false
+  #   end
+  # end
 end

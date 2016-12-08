@@ -1,17 +1,3 @@
-
-<%= form_for :sessions, url: sessions_path do |f| %>
-
-  <%= f.label 'email', 'Email' %>
-  <%= f.text_field 'email' %>
-
-  <%= f.label 'password', 'Password' %>
-  <%= f.password_field 'password' %>
-
-  <%= f.submit "Sign In"%>
-<% end %>
-
-
-
 <h2>Login</h2>
 <% if @errors %>
   <p><%= @errors %></p>
@@ -29,6 +15,6 @@
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit "Sign In" %>
   </p>
  <% end %>
