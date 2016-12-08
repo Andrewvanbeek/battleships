@@ -3,7 +3,7 @@
 
 <%= form_for [@game, @ship_1], name: "Carrier" do |f| %>
 <%= f.hidden_field :classification, value: "carrier" %>
-<%= f.submit %>
+<%= f.submit  %>
 <% end %>
 
 <%= form_for [@game, @ship_1], id: "Battleship" do |f| %>

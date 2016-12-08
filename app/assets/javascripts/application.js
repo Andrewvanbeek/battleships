@@ -63,6 +63,9 @@ setTimeout(updateShots, 1000);
  $( document ).ready(function() {
   $(".new_ship").on("submit", function(e){
   e.preventDefault();
+  var button = $(this)
+  $(".new_ship").hide()
+  button.show()
   var newShipForm = $(this)
   var url = newShipForm.attr("action")
   var value = newShipForm.find("input")
@@ -95,6 +98,8 @@ setTimeout(updateShots, 1000);
              .fail(function() {
             })
             .done(function(data) {
+              $(".new_ship").show()
+              button.hide()
               });
         })
       }
