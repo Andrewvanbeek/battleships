@@ -140,7 +140,18 @@ describe UsersController do
         expect(response).to render_template(:new)
       end
     end
+
+    describe "#DELETE destroy" do
+      it "responds with status code 302" do
+        delete :destroy, {id: user.id}
+        expect(response).to have_http_status 302
+      end
+
+      it "redirects to the homepage" do
+        session[:user_id] = user.id
+        delete :destroy, {id: user.id}
+        expect(response).to redirect_to root_path
+      end
+    end
   end
-
-
 end
