@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :find_user, only: [:edit, :update, :show, :destroy]
 
   def show
@@ -39,7 +38,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-
       params.require(:user).permit(:username, :email, :password)
     end
 

@@ -7,6 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+ <div>
+    <% if logged_in? %>
+      <nav>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Logout', logout_path , method: "delete"  %>
+        <%= link_to "#{current_user.username}", user_path(current_user.id) %>
+      </nav>
+    <% else %>
+      <nav>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Login', new_session_path %>
+        <%= link_to 'Register', new_user_path %>
+      </nav>
+    <% end %>
+  </div>
+
 
 <%= yield %>
 
