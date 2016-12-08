@@ -29,22 +29,22 @@ $(document).on('ready page:load', function () {
     .done(function(data) {
     });
   })
-  var updateShots = function () {
-    $.ajax({
-      url: "/shots",
-      method: "GET",
-      data: {param1: 'value1'},
-    })
-    .fail(function() {
-      setTimeout(updateShots, 100);
-    })
-    .done(function(data) {
-      $("#ok").text(data.hey)
-      setTimeout(updateShots, 1000);
-    });
+  // var updateShots = function () {
+  //   $.ajax({
+  //     url: "/shots",
+  //     method: "GET",
+  //     data: {param1: 'value1'},
+  //   })
+  //   .fail(function() {
+  //     setTimeout(updateShots, 100);
+  //   })
+  //   .done(function(data) {
+  //     $("#ok").text(data.hey)
+  //     setTimeout(updateShots, 1000);
+  //   });
 
-  };
-  setTimeout(updateShots, 1000);
+  // };
+  // setTimeout(updateShots, 1000);
 
 
 
