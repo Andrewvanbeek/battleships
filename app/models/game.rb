@@ -26,4 +26,20 @@ class Game < ActiveRecord::Base
     self.player1_ships.length == 5 && self.player2_ships.length == 5
   end
 
+  def user_ships(user)
+    self.ships.find_all {|ship| ship.user_id == user.id}
+  end
+
+  def ship_there?(user, ship)
+    if user.id == self.player1.id
+      user_ships = user_ships(user)
+      used_ships = user_ships.map {|ship| ship.classification}
+      used_ships.include?(ship.classification)
+    elsif user.id == self.player2.id
+      user_ships = user_ships(user)
+      used_ships = user_ships.map {|ship| ship.classification}
+      used_ships.include?(ship.classification)
+    end
+  end
+
 end

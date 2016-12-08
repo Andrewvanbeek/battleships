@@ -6,14 +6,16 @@ class ShipsController < ApplicationController
       @game = Game.find_by(id: params[:game_id])
       @ship = Ship.new(ship_params)
       puts "cheeky cheese"
-      if @ship.save
-        @game.ships << @ship
-        @user.ships << @ship
-        @game.save
-        @user.save
-        render json: { hey: "hello"}, status: 201
+      if !@game.ship_there?(@user, @ship)
+        if @ship.save
+          @game.ships << @ship
+          @user.ships << @ship
+          @game.save
+          @user.save
+          render json: { hey: "hello"}, status: 201
+        end
+        puts @ship.errors.full_messages
       end
-      puts @ship.errors.full_messages
     end
   end
 
@@ -25,4 +27,5 @@ class ShipsController < ApplicationController
 
 
 end
+
 
