@@ -3,27 +3,27 @@
 
 <%= form_for [@game, @ship_1], name: "Carrier" do |f| %>
 <%= f.hidden_field :classification, value: "carrier" %>
-<%= f.submit  %>
+<%= f.submit "Create a carrier" %>
 <% end %>
 
 <%= form_for [@game, @ship_1], id: "Battleship" do |f| %>
 <%= f.hidden_field :classification, value: "battleship" %>
-<%= f.submit %>
+<%= f.submit "Create a battleship" %>
 <% end %>
 
 <%= form_for [@game, @ship_1], id: "Cruiser" do |f| %>
 <%= f.hidden_field :classification, value: "cruiser" %>
-<%= f.submit %>
+<%= f.submit "Create a cruiser" %>
 <% end %>
 
 <%= form_for [@game, @ship_1], id: "Submarine" do |f| %>
 <%= f.hidden_field :classification, value: "submarine" %>
-<%= f.submit %>
+<%= f.submit "Create a Submarine" %>
 <% end %>
 
 <%= form_for [@game, @ship_1], id: "Destroyer" do |f| %>
 <%= f.hidden_field :classification, value: "destroyer" %>
-<%= f.submit %>
+<%= f.submit "Create a Destroyer"%>
 <% end %>
 
 
