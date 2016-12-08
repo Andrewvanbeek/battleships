@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
     else
-      @errors = ["Invalid login info"]
+      @errors = "Invalid login info"
       render :new
     end
   end

@@ -9,7 +9,7 @@ class ShotsController < ApplicationController
 
   def index
     @shots = Shot.all
-         render json: { hey: @shots.length
+    render json: { hey: @shots.length
 }, status: 201
   end
 end

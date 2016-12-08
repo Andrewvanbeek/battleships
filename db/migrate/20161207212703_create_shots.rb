@@ -6,6 +6,7 @@ class CreateShots < ActiveRecord::Migration
       t.integer :x_coord
       t.integer :y_coord
       t.integer :ship_id
+      t.boolean :hit
       t.timestamps null: false
     end
   end

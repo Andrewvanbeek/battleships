@@ -11,4 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20161207222103) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "player1_id", null: false
+    t.integer  "player2_id", null: false
+    t.integer  "winner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.string   "classification",             null: false
+    t.integer  "size",                       null: false
+    t.integer  "x_coord",                    null: false
+    t.integer  "y_coord",                    null: false
+    t.integer  "hit_count",      default: 0
+    t.integer  "game_id",                    null: false
+    t.integer  "user_id",                    null: false
+    t.integer  "orientation"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "shots", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.integer  "x_coord"
+    t.integer  "y_coord"
+    t.integer  "ship_id"
+    t.boolean  "hit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+end
