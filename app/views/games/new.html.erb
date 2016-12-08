@@ -1,6 +1,36 @@
 <center>
-<table class="table-bordered">
-  <tr id="row_one">
+
+
+<%= form_for @ship_1, name: "Carrier" do |f| %>
+<%= f.hidden_field :classification, value: "carrier" %>
+<%= f.submit %>
+<% end %>
+
+<%= form_for @ship_1, id: "Battleship" do |f| %>
+<%= f.hidden_field :classification, value: "battleship" %>
+<%= f.submit %>
+<% end %>
+
+<%= form_for @ship_1, id: "Cruiser" do |f| %>
+<%= f.hidden_field :classification, value: "cruiser" %>
+<%= f.submit %>
+<% end %>
+
+<%= form_for @ship_1, id: "Submarine" do |f| %>
+<%= f.hidden_field :classification, value: "submarine" %>
+<%= f.submit %>
+<% end %>
+
+<%= form_for @ship_1, id: "Destroyer" do |f| %>
+<%= f.hidden_field :classification, value: "destroyer" %>
+<%= f.submit %>
+<% end %>
+
+
+
+
+<table id="player_1" class="table-bordered">
+  <tr id="header">
     <th>Row 1</th>
     <th>Row 2</th>
     <th>Row 3</th>
@@ -10,7 +40,7 @@
     <th>Row 7</th>
     <th>Row 8</th>
   </tr>
-  <tr id="row_two">
+  <tr id="row_one" value="1">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -20,7 +50,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-  <tr id="row_three">
+  <tr id="row_two" value="2">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -30,7 +60,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_four">
+    <tr id="row_three" value="3">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -40,7 +70,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_five">
+    <tr id="row_four" value="4">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -50,7 +80,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_six">
+    <tr id="row_five" value="5">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -60,7 +90,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_seven">
+    <tr id="row_six" value="6">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -70,7 +100,17 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-  <tr id="row_eight">
+  <tr id="row_seven" value="7">
+    <td>Row 1</td>
+    <td>Row 2</td>
+    <td>Row 3</td>
+    <td>Row 4</td>
+    <td>Row 5</td>
+    <td>Row 6</td>
+    <td>Row 7</td>
+    <td>Row 8</td>
+  </tr>
+    <tr id="row_eight" value="8">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -84,8 +124,8 @@
 
 <br><br><br><br>
 
-<table class="table-bordered">
-  <tr id="row_one">
+<table id="player_2" class="table-bordered">
+   <tr id="header">
     <th>Row 1</th>
     <th>Row 2</th>
     <th>Row 3</th>
@@ -95,7 +135,7 @@
     <th>Row 7</th>
     <th>Row 8</th>
   </tr>
-  <tr id="row_two">
+  <tr id="row_one" value="1">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -105,7 +145,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-  <tr id="row_three">
+  <tr id="row_two" value="2">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -115,7 +155,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_four">
+    <tr id="row_three" value="3">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -125,7 +165,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_five">
+    <tr id="row_four" value="4">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -135,7 +175,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_six">
+    <tr id="row_five" value="5">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -145,7 +185,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-    <tr id="row_seven">
+    <tr id="row_six" value="6">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -155,7 +195,7 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
-  <tr id="row_eight">
+  <tr id="row_seven" value="7">
     <td>Row 1</td>
     <td>Row 2</td>
     <td>Row 3</td>
@@ -165,6 +205,17 @@
     <td>Row 7</td>
     <td>Row 8</td>
   </tr>
+    <tr id="row_eight" value="8">
+    <td>Row 1</td>
+    <td>Row 2</td>
+    <td>Row 3</td>
+    <td>Row 4</td>
+    <td>Row 5</td>
+    <td>Row 6</td>
+    <td>Row 7</td>
+    <td>Row 8</td>
+  </tr>
+
 </table>
 </center>
 

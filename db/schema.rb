@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20161207222103) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "player1_id", null: false
-    t.integer  "player2_id", null: false
+    t.integer  "player2_id"
     t.integer  "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20161207222103) do
     t.integer  "x_coord",                    null: false
     t.integer  "y_coord",                    null: false
     t.integer  "hit_count",      default: 0
-    t.integer  "game_id",                    null: false
-    t.integer  "user_id",                    null: false
+    t.integer  "game_id"
+    t.integer  "user_id"
     t.integer  "orientation"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

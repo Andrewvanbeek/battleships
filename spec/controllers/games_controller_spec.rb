@@ -17,6 +17,15 @@ describe GamesController do
     end
   end
 
+    describe "GET #create" do
+    it "renders the :index template" do
+      session[:user_id] = a.id
+      post :create
+
+      expect(response).to redirect_to :action => :show, :id => assigns(:game).id
+      end
+  end
+
   describe "GET #show" do
     it "responds with status code 200" do
       get :show, { id: game.id }
@@ -54,17 +63,18 @@ describe GamesController do
   describe "POST #create" do
     context "when valid params are passed" do
       it "responds with status code 302" do
+        session[:user_id] = a.id
         post :create, { game: { player1_id: a.id, player2_id: b.id } }
         expect(response).to have_http_status 302
       end
 
       it "creates a new game in the database" do
-
+        session[:user_id] = a.id
         expect { post :create, { game: { player1_id: a.id, player2_id: b.id } } }.to change(Game, :count).by(1)
       end
 
       it "assigns the newly created game as @game" do
-
+        session[:user_id] = a.id
         post :create, { game: { player1_id: a.id, player2_id: b.id } }
         expect(assigns(:game)).to eq(Game.all[-1])
       end
@@ -72,17 +82,20 @@ describe GamesController do
 
     context "when invalid params are passed" do
       it "responds with status code 200" do
-        post :create, { game: { player1_id: "", player2_id: ""} }
+        session[:user_id] = nil
+        post :create, { game: { player1_id: nil} }
         expect(response).to have_http_status 200
       end
 
       it "does not create a new game in the database" do
+        session[:user_id] = nil
         expect { post :create, { game: { player1_id: "" } } }.to change(Game, :count).by(0)
       end
 
       it "renders the :new template" do
+        session[:user_id] = a.id
         post :create, { game: { player1_id: "", player2_id: ""} }
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to :action => :show, :id => assigns(:game).id
       end
     end
   end
