@@ -64,6 +64,7 @@ setTimeout(updateShots, 1000);
   $(".new_ship").on("submit", function(e){
   e.preventDefault();
   var newShipForm = $(this)
+  var url = newShipForm.attr("action")
   var value = newShipForm.find("input")
   var value = $(value[2]).attr("value")
   console.log(value)
@@ -82,12 +83,12 @@ setTimeout(updateShots, 1000);
       spot.addClass("placer")
       spot.nextUntil(endSpot).addClass("placer")
       var shipSize = $("#player_1 .placer").length
-      var data = {x_coord: xCoord, y_coord: yCoord, size: 5}
+      var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 5, classification: value}}
       if(shipSize === 5){
         spot.on("dblclick", function(e){
           e.preventDefault();
             $.ajax({
-              url: '/ships',
+              url: url,
               method: "POST",
               data: data,
               })
@@ -95,55 +96,163 @@ setTimeout(updateShots, 1000);
             })
             .done(function(data) {
               });
-
         })
-
-
-
-
       }
-
       else {
         alert("destroyer has to be 5 spaces")
       }
-
     })
-
-
   }
 
-  else if(value === "destroyer") {
-       $("#player_1 td").on("click", function(e){
+  else if(value === "battleship") {
+    $("#player_1 td").on("click", function(e){
+      var size = 4
       e.preventDefault();
       var spot = $(this)
       var row = $(this).closest("tr")
       var rowTableDatas = $(row).children()
-      console.log(rowTableDatas)
       var xCoord = $(row).attr("value")
       var yCoord = $(rowTableDatas).index(spot)
-      var data = {classification: "carrier", size: 5, }
+      var endSpot = spot.next().next().next().next()
+      $("#player_1 td").removeClass("placer")
+      $(endSpot).addClass("placer")
+      spot.addClass("placer")
+      spot.nextUntil(endSpot).addClass("placer")
+      var shipSize = $("#player_1 .placer").length
+      var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 4, classification: value}}
+      if(shipSize === 4){
+        spot.on("dblclick", function(e){
+          e.preventDefault();
+            $.ajax({
+              url: url,
+              method: "POST",
+              data: data,
+              })
+             .fail(function() {
+            })
+            .done(function(data) {
+              });
+        })
+      }
+      else {
+        alert("batteship has to be 4 spaces")
+      }
     })
-
-
-
-
   }
 
-  else if(value === "destroyer") {
-       $("#player_1 td").on("click", function(e){
+  else if(value === "cruiser") {
+$("#player_1 td").on("click", function(e){
+      var size = 3
       e.preventDefault();
       var spot = $(this)
       var row = $(this).closest("tr")
       var rowTableDatas = $(row).children()
-      console.log(rowTableDatas)
       var xCoord = $(row).attr("value")
       var yCoord = $(rowTableDatas).index(spot)
-      var data = {classification: "carrier", size: 5, }
+      var endSpot = spot.next().next().next().next()
+      $("#player_1 td").removeClass("placer")
+      $(endSpot).addClass("placer")
+      spot.addClass("placer")
+      spot.nextUntil(endSpot).addClass("placer")
+      var shipSize = $("#player_1 .placer").length
+      var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 3, classification: value}}
+      if(shipSize === 3){
+        spot.on("dblclick", function(e){
+          e.preventDefault();
+            $.ajax({
+              url: url,
+              method: "POST",
+              data: data,
+              })
+             .fail(function() {
+            })
+            .done(function(data) {
+              });
+        })
+      }
+
+      else {
+        alert("cruiser has to be 3 spaces")
+      }
+
     })
 
+  }
+    else if(value === "submarine") {
+$("#player_1 td").on("click", function(e){
+      var size = 3
+      e.preventDefault();
+      var spot = $(this)
+      var row = $(this).closest("tr")
+      var rowTableDatas = $(row).children()
+      var xCoord = $(row).attr("value")
+      var yCoord = $(rowTableDatas).index(spot)
+      var endSpot = spot.next().next().next().next()
+      $("#player_1 td").removeClass("placer")
+      $(endSpot).addClass("placer")
+      spot.addClass("placer")
+      spot.nextUntil(endSpot).addClass("placer")
+      var shipSize = $("#player_1 .placer").length
+      var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 3, classification: value}}
+      if(shipSize === 5){
+        spot.on("dblclick", function(e){
+          e.preventDefault();
+            $.ajax({
+              url: url,
+              method: "POST",
+              data: data,
+              })
+             .fail(function() {
+            })
+            .done(function(data) {
+              });
+        })
+      }
 
+      else {
+        alert("submarine has to be 3 spaces")
+      }
 
+    })
 
+  }
+
+      else if(value === "destroyer") {
+$("#player_1 td").on("click", function(e){
+      var size = 2
+      e.preventDefault();
+      var spot = $(this)
+      var row = $(this).closest("tr")
+      var rowTableDatas = $(row).children()
+      var xCoord = $(row).attr("value")
+      var yCoord = $(rowTableDatas).index(spot)
+      var endSpot = spot.next().next().next().next()
+      $("#player_1 td").removeClass("placer")
+      $(endSpot).addClass("placer")
+      spot.addClass("placer")
+      spot.nextUntil(endSpot).addClass("placer")
+      var shipSize = $("#player_1 .placer").length
+      var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 2, classification: value}}
+      if(shipSize === 5){
+        spot.on("dblclick", function(e){
+          e.preventDefault();
+            $.ajax({
+              url: url,
+              method: "POST",
+              data: data,
+              })
+             .fail(function() {
+            })
+            .done(function(data) {
+              });
+        })
+      }
+
+      else {
+        alert("destroyer has to be 2 spaces")
+      }
+
+    })
 
   }
 
