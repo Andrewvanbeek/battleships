@@ -34,6 +34,13 @@ class GamesController < ApplicationController
     @shot = Shot.new
     @game = Game.find(params[:id])
 
+    if @game.ready_to_join
+      @player2 = User.find(session[:user_id])
+      if @player2 != @game.player1
+        @game.player2_id = @player2.id
+        @game.save
+      end
+    end
     render :show
   end
 
