@@ -69,8 +69,10 @@ setInterval(updateShots, 1000);
       e.preventDefault();
       var spot = $(this)
       var row = $(this).closest("tr")
-      var xCoord = $(row).attr("value"))
-      var
+      var rowTableDatas = $(row).children()
+      console.log(rowTableDatas)
+      var xCoord = $(row).attr("value")
+      var yCoord = $(rowTableDatas).index(spot)
       var data = {classification: "carrier", size: 5, }
     })
 
