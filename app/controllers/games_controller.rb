@@ -54,4 +54,3 @@ class GamesController < ApplicationController
     params.require(:game).permit(:player1_id)
   end
 end
-
