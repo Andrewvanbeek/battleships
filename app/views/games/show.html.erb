@@ -1,6 +1,7 @@
 <center>
 
 
+
 <%= form_for [@game, @ship_1], name: "Carrier" do |f| %>
 <%= f.hidden_field :classification, value: "carrier" %>
 <%= f.submit "Create a carrier" %>
@@ -28,198 +29,218 @@
 
 
 
-<table id="player_1" class="table-bordered">
-  <tr id="header">
-    <th>Row 1</th>
-    <th>Row 2</th>
-    <th>Row 3</th>
-    <th>Row 4</th>
-    <th>Row 5</th>
-    <th>Row 6</th>
-    <th>Row 7</th>
-    <th>Row 8</th>
-  </tr>
-  <tr id="row_one" value="1">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
-  <tr id="row_two" value="2">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+
+
+  <table id="opponent" class="table-bordered">
+    <tr id="header">
+      <th></th>
+      <th> 1 </th>
+      <th> 2 </th>
+      <th> 3 </th>
+      <th> 4 </th>
+      <th> 5 </th>
+      <th> 6 </th>
+      <th> 7 </th>
+      <th> 8 </th>
+    </tr>
+    <tr id="row_one" value="1">
+      <td>A</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+    <tr id="row_two" value="2">
+      <td>B</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+
     <tr id="row_three" value="3">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>C</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_four" value="4">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>D</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_five" value="5">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>E</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_six" value="6">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
-  <tr id="row_seven" value="7">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>F</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+    <tr id="row_seven" value="7">
+      <td>G</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_eight" value="8">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
-</table>
+      <td>H</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+  </table>
 
-<br><br><br><br>
+  <br><br><br><br>
 
-<table id="player_2" class="table-bordered">
-   <tr id="header">
-    <th>Row 1</th>
-    <th>Row 2</th>
-    <th>Row 3</th>
-    <th>Row 4</th>
-    <th>Row 5</th>
-    <th>Row 6</th>
-    <th>Row 7</th>
-    <th>Row 8</th>
-  </tr>
-  <tr id="row_one" value="1">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
-  <tr id="row_two" value="2">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+  <table id="player" class="table-bordered">
+    <tr id="header">
+      <th></th>
+      <th> 1 </th>
+      <th> 2 </th>
+      <th> 3 </th>
+      <th> 4 </th>
+      <th> 5 </th>
+      <th> 6 </th>
+      <th> 7 </th>
+      <th> 8 </th>
+    </tr>
+    <tr id="row_one" value="1">
+      <td>A</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+    <tr id="row_two" value="2">
+      <td>B</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_three" value="3">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>C</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_four" value="4">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>D</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_five" value="5">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>E</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_six" value="6">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
-  <tr id="row_seven" value="7">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
+      <td>F</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+    <tr id="row_seven" value="7">
+      <td>G</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
     <tr id="row_eight" value="8">
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td>Row 3</td>
-    <td>Row 4</td>
-    <td>Row 5</td>
-    <td>Row 6</td>
-    <td>Row 7</td>
-    <td>Row 8</td>
-  </tr>
-
-</table>
+      <td>H</td>
+      <td class="space column_1" value="1">Row 1</td>
+      <td class="space column_2" value="2">Row 2</td>
+      <td class="space column_3" value="3">Row 3</td>
+      <td class="space column_4" value="4">Row 4</td>
+      <td class="space column_5" value="5">Row 5</td>
+      <td class="space column_6" value="6">Row 6</td>
+      <td class="space column_7" value="7">Row 7</td>
+      <td class="space column_8" value="8">Row 8</td>
+    </tr>
+  </table>
 </center>
 
 <div id="ok">0</div>
 
 <%= form_for @shot, id: "fire" do |f| %>
-<%= f.submit %>
+  <%= f.submit %>
 <% end %>

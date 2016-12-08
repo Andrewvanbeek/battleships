@@ -27,4 +27,34 @@ class User < ActiveRecord::Base
 		self.total_shots_fired - self.total_hits
 	end
 
+	def game_shots_fired
+		if self.games.last != nil
+			g_id = self.games.last.id
+			Game.find(g_id).shots.length
+		else
+			0
+		end
+	end
+
+	def game_you_shots_fired
+		if self.games.last != nil
+			self.games.last.shots.length
+		else
+			0
+		end
+	end
+
+	def game_opp_shots_fired
+		self.game_shots_fired - self.game_you_shots_fired
+	end
+
+	def last_game_status
+		if self.games.last != nil
+			if self.id == self.games.last.winner_id
+				"Won"
+			else
+				"Lost"
+			end
+		end
+	end
 end
