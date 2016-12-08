@@ -16,4 +16,6 @@ describe User do
       expect(user.password).to eq "password"
     end
   end
+
+  describe ""
 end
