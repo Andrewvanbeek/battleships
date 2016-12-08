@@ -4,19 +4,40 @@ describe UsersController do
   let!(:user) {User.create!(username: "test", email: "test@test.com", password: "password")}
 
   describe "GET #show" do
-    it "responds with status code 200" do
-      get :show, {id: user.id}
-      expect(response).to have_http_status 200
+    context "when correct user is logged in" do
+      it "responds with status code 200" do
+        session[:user_id] = user.id
+        get :show, {id: user.id}
+        expect(response).to have_http_status 200
+      end
+
+      it "assigns the correct user as @user" do
+        get :show, {id: user.id}
+        expect(assigns(:user)).to eq(user)
+      end
+
+      it "renders the :show template" do
+        session[:user_id] = user.id
+        get :show, {id: user.id}
+        expect(response).to render_template(:show)
+      end
     end
 
-    it "assigns the correct user as @user" do
-      get :show, {id: user.id}
-      expect(assigns(:user)).to eq(user)
-    end
+    context "When user is not logged in" do
+      it "responds with status code 302" do
+        get :show, {id: user.id}
+        expect(response).to have_http_status 302
+      end
 
-    it "renders the :show template" do
-      get :show, {id: user.id}
-      expect(response).to render_template(:show)
+      it "assigns the correct user as @user" do
+        get :show, {id: user.id}
+        expect(assigns(:user)).to eq(user)
+      end
+
+      it "redirects the to sessions/new" do
+        get :show, {id: user.id}
+        expect(response).to redirect_to new_session_path
+      end
     end
   end
 
@@ -34,6 +55,44 @@ describe UsersController do
     it "renders the :new template" do
       get :new
       expect(response).to render_template(:new)
+    end
+  end
+
+  describe "GET #edit" do
+    context "when correct user is logged in" do
+      it "responds with status code 200" do
+        session[:user_id] = user.id
+        get :edit, {id: user.id}
+        expect(response).to have_http_status 200
+      end
+
+      it "assigns the correct user as @user" do
+        get :edit, {id: user.id}
+        expect(assigns(:user)).to eq(user)
+      end
+
+      it "renders the :show template"
+        # session[:user_id] = user.id
+        # get :edit, {id: user.id}
+        # expect(response).to render_template(:edit)
+
+    end
+
+    context "When user is not logged in" do
+      it "responds with status code 302" do
+        get :edit, {id: user.id}
+        expect(response).to have_http_status 302
+      end
+
+      it "assigns the correct user as @user" do
+        get :edit, {id: user.id}
+        expect(assigns(:user)).to eq(user)
+      end
+
+      it "redirects the to sessions/new"
+        # get :edit, {id: user.id}
+        # expect(response).to redirect_to new_session_path
+
     end
   end
 

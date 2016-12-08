@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update, :show, :destroy]
 
   def show
+    if session[:user_id] != params[:id].to_i
+      redirect_to new_session_path
+    end
   end
 
   def new
@@ -9,6 +12,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if session[:user_id] != params[:id].to_i
+      redirect_to new_session_path
+    end
   end
 
   def create
@@ -22,10 +28,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
-      redirect_to @user
+    if session[:user_id] != params[:id].to_i
+      redirect_to new_session_path
     else
-      render :edit
+      if @user.update_attributes(user_params)
+        redirect_to @user
+      else
+        render :edit
+      end
     end
   end
 
