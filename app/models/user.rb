@@ -1,25 +1,17 @@
 class User < ActiveRecord::Base
   has_many :shots
   has_many :ships
-  has_many :games
+  has_many :games, { foreign_key: :player1_id }
+  has_many :wins, { foreign_key: :winner_id, class_name: "Game" }
 
   has_secure_password
 
 	def total_wins
-	 	user_id = self.id
-	 	wins = 0
-	 	self.games.each do |game|
-			if user_id == game.winner_id
-				wins += 1
-			end
-		end
-		wins
+		Game.where(winner_id: self.id).to_a.length
 	end
 
-		# self.games.where(winner_id: self.id)
-
 	def total_losses
-		self.games.length - self.games.user_total_wins
+		self.games.length - self.total_wins
 	end 
 
 	def total_shots_fired
