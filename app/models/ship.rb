@@ -1,5 +1,6 @@
 class Ship < ActiveRecord::Base
 	belongs_to :game
+  belongs_to :user
 
 	validates :classification, presence: true
 	validates :size, presence: true, :numericality => { greater_than: 1, less_than_or_equal_to: 5}
