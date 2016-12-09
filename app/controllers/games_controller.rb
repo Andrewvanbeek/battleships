@@ -30,6 +30,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: session[:user_id])
     @ship_1 = Ship.new
     @shot = Shot.new
     @game = Game.find(params[:id])
@@ -39,11 +40,9 @@ class GamesController < ApplicationController
         @game.player2_id = @player2.id
         @game.save
       end
-
     end
     if request.xhr?
-      puts "HEY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      render json: { ready: @game.ready_to_start}, status: 201
+      render json: { ready: @game.ready_to_start, player1: @game.player1.username}, status: 201
     else
       render :show
     end

@@ -9,8 +9,9 @@ $(document).on('ready page:load', function () {
       setTimeout(updateShots, 100);
     })
     .done(function(data) {
-      if(data.ready === true){
+      if(data.ready === true && ($("#playername").attr("name") === data.player1)){
         console.log("IT WAS TRUE")
+
          $("#opponent").on("click", ".space", function(e){
       e.preventDefault();
 
