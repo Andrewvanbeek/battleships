@@ -18,8 +18,8 @@ $(document).on('ready page:load', function () {
       e.preventDefault();
 
       var $shot = $(this);
-      var x_coord = $shot.attr("value");
-      var y_coord = $shot.closest("tr").attr("value");
+      var y_coord = $shot.attr("value");
+      var x_coord = $shot.closest("tr").attr("value");
       var data = {shot: {x_coord: x_coord, y_coord: y_coord}};
 
       $.ajax({
