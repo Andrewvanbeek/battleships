@@ -58,7 +58,7 @@ $(document).on('ready page:load', function () {
   // };
   // setTimeout(updateShots, 1000);
 
-// });
+});
 
   $( document ).ready(function() {
     $(".new_ship").on("submit", function(e){
