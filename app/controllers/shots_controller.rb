@@ -1,7 +1,6 @@
 class ShotsController < ApplicationController
   def create
     if request.xhr?
-      p params
       @user = User.find_by(id: session[:user_id])
       @game = Game.find_by(id: params[:game_id])
       @shot = Shot.create(shot_params)
@@ -9,6 +8,28 @@ class ShotsController < ApplicationController
       @user.shots << @shot
       @game.save
       @user.save
+      if @user == @game.player1
+        @game.player2_ships.each do |ship|
+          if ship.x_coord == @shot.x_coord && ship.y_coord == @shot.y_coord
+            ship.hit_count += 1
+            ship.save
+            @shot.ship = ship
+            @shot.hit = true
+            @shot.save
+          end
+        end
+      elsif @user == @game.player2
+        @game.player1_ships.each do |ship|
+          if ship.x_coord == @shot.x_coord && ship.y_coord == @shot.y_coord
+            ship.hit_count += 1
+            ship.save
+            @shot.ship = ship
+            @shot.hit = true
+            @shot.save
+          end
+        end
+      else
+      end
      render json: { hey: "hello"
       }, status: 201
     end
