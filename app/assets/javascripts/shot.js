@@ -1,5 +1,18 @@
 $(document).on('ready page:load', function () {
- $("#opponent").on("click", ".space", function(e){
+   var updateShots = function () {
+    $.ajax({
+      url: window.location.pathname,
+      method: "GET",
+      data: {param1: 'value1'},
+    })
+    .fail(function() {
+      setTimeout(updateShots, 100);
+    })
+    .done(function(data) {
+      if(data.ready === true && ($("#playername").attr("name") === data.player)){
+        console.log("IT WAS TRUE")
+
+         $("#opponent").on("click", ".space", function(e){
       e.preventDefault();
 
       var $shot = $(this);
@@ -18,4 +31,19 @@ $(document).on('ready page:load', function () {
         $shot.addClass("miss");
       });
   })
+
+
+
+
+
+      }
+      console.log(data.ready)
+      setTimeout(updateShots, 1000);
+    });
+
+  };
+  setTimeout(updateShots, 1000);
+
 });
+
+
