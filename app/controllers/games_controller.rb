@@ -60,14 +60,20 @@ class GamesController < ApplicationController
           pl_shots = @game.player1.shots.where(game_id: @game.id)
           op_ships = @game.player2_ships
           op_shots = @game.player2.shots.where(game_id: @game.id)
+
+          render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start ,player: player, activePlayer: @game.active_player, playerShots: pl_shots,opponentShots: op_shots}, status: 201
+
         elsif @game.player2.id == session[:user_id]
           player = @game.player2.username
           pl_ships = @game.player2_ships
           pl_shots = @game.player2.shots.where(game_id: @game.id)
           op_ships = @game.player1_ships
           op_shots = @game.player1.shots.where(game_id: @game.id)
+
+          render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start ,player: player, activePlayer: @game.active_player, playerShots: pl_shots,opponentShots: op_shots}, status: 201
+
         end
-        render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start ,player: player, activePlayer: @game.active_player, playerShots: pl_shots,opponentShots: op_shots}, status: 201
+
       end
     else
       render :show

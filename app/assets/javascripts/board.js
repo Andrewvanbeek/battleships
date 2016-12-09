@@ -6,15 +6,13 @@ var updateBoard = function () {
         method: "GET"
       })
       .fail(function() {
-        setTimeout(updateBoard, 10);
+        setTimeout(updateBoard, 1000);
       })
       .done(function(data) {
 
         if (data.gameStart){
           $(".new_ship").remove();
-          if(data.player == data.activePlayer){
-            // notify player who's turn it is
-            $("#playername").text("It's Your Turn")
+
 
             //render all the ships of this player
             var ships = data.playerShips
@@ -59,14 +57,21 @@ var updateBoard = function () {
               var shotPos = allSpots[right_coord];
               if (shot.hit){
                 $(shotPos).addClass("hit");
+                $(shotPos).removeClass("perm-placer");
               } else {
                 $(shotPos).addClass("miss");
               }
             })
 
+          if(data.player == data.activePlayer){
+            // notify player who's turn it is
+            $("#playername").text("It's Your Turn")
+
+
 
          //allows active player to make a shot
             $("#opponent").on("click",".space", function(e){
+              e.preventDefault();
               var $shot = $(this);
               var y_coord = $shot.attr("value");
               var x_coord = $shot.closest("tr").attr("value");
@@ -101,13 +106,13 @@ var updateBoard = function () {
             })
           }
         }
-        setTimeout(updateBoard, 300);
+        setTimeout(updateBoard, 1000);
 
 
       })
     }
 
-  setTimeout(updateBoard, 300);
+  setTimeout(updateBoard, 1000);
 
 
 

@@ -9,9 +9,12 @@ class ShotsController < ApplicationController
 
       if @user == @game.player1
         @game.player2_ships.each do |ship|
+
           puts [ship.x_coord..(ship.x_coord + ship.size)]
           puts [ship.x_coord..(ship.x_coord + ship.size)].include?(@shot.x_coord)
-          if [ship.x_coord].include?(@shot.x_coord) && [ship.y_coord..(ship.y_coord + ship.size)].include?(@shot.y_coord)
+          puts [ship.y_coord..(ship.y_coord + ship.size)].include?(@shot.y_coord)
+
+          if ship.x_coord == @shot.x_coord && ship.y_coord <= @shot.y_coord && (ship.y_coord + ship.size) >= @shot.y_coord
             ship.hit_count += 1
             ship.save
             # @shot.ship = ship
@@ -27,7 +30,7 @@ class ShotsController < ApplicationController
         @shot.save
       elsif @user == @game.player2
         @game.player1_ships.each do |ship|
-          if [ship.x_coord].include?(@shot.x_coord) && [ship.y_coord..(ship.y_coord + ship.size)].include?(@shot.y_coord)
+          if ship.x_coord == @shot.x_coord && ship.y_coord <= @shot.y_coord && (ship.y_coord + ship.size) >= @shot.y_coord
             ship.hit_count += 1
             ship.save
             # @shot.ship = ship
