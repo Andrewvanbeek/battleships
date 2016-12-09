@@ -43,7 +43,9 @@ class Game < ActiveRecord::Base
   end
 
   def who_fired_last
-    self.shots.last.user
+    if !self.shots.empty?
+      self.shots.last.user
+    end
   end
 
 end
