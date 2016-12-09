@@ -22,6 +22,31 @@ class Game < ActiveRecord::Base
     self.player2.ships.where(game_id: self.id)
   end
 
+  def player1_dead_ships
+    shippys = self.player1_ships.find_all {|ship| ship.dead == true}
+  end
+
+  def player1_lost
+    player1_dead_ships.count >= 5
+  end
+
+
+  def player2_dead_ships
+    shippys = self.player2_ships.find_all {|ship| ship.dead == true}
+  end
+
+  def player2_lost
+    player2_dead_ships.count >= 5
+  end
+
+  def game_over
+    if player1_lost
+      return true
+    elsif player2_lost
+      return true
+    end
+  end
+
   def ready_to_start
     self.player1_ships.length == 5 && self.player2_ships.length == 5
   end
@@ -43,7 +68,10 @@ class Game < ActiveRecord::Base
   end
 
   def who_fired_last
-    self.shots.last.user
+    if self.shots.count > 0
+      self.shots.last.user
+    end
   end
 
 end
+
