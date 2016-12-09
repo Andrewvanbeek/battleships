@@ -95,14 +95,8 @@ setTimeout(updateShots, 1000);
             })
             .done(function(data) {
               });
-
         })
-
-
-
-
       }
-
       else {
         alert("destroyer has to be 5 spaces")
       }
