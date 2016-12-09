@@ -1,5 +1,7 @@
-<ul>
-<% @games.each do |game| %>
-  <li><%= link_to "Join the game with #{game.player1.username}", game_path(game)%></li>
+<% if logged_in? %>
+  <ul>
+  <% @games.each do |game| %>
+    <li><%= link_to "Join the game with #{game.player1.username}", game_path(game)%></li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>

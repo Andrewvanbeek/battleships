@@ -6,3 +6,8 @@
 <%= link_to "List of games to Join", games_path%>
 
 </div>
+
+<%= link_to "Update Profile", edit_user_path(current_user) %>
+<%= link_to "Delete Profile", @user, method: :delete, data: {confirm: "You sure?"} %>
+
+<%= render partial: "stats" %>
