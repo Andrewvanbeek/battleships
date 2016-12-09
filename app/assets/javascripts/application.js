@@ -41,25 +41,25 @@ $(document).on('ready page:load', function () {
   //     });
   // })
 
-  var updateShots = function () {
-    $.ajax({
-      url: window.location.pathname,
-      method: "GET",
-      data: {param1: 'value1'},
-    })
-    .fail(function() {
-      setTimeout(updateShots, 100);
-    })
-    .done(function(data) {
-      if(data.ready === true){
-        console.log("IT WAS TRUE")
-      }
-      console.log(data.ready)
-      setTimeout(updateShots, 1000);
-    });
+  // var updateShots = function () {
+  //   $.ajax({
+  //     url: window.location.pathname,
+  //     method: "GET",
+  //     data: {param1: 'value1'},
+  //   })
+  //   .fail(function() {
+  //     setTimeout(updateShots, 100);
+  //   })
+  //   .done(function(data) {
+  //     if(data.ready === true){
+  //       console.log("IT WAS TRUE")
+  //     }
+  //     console.log(data.ready)
+  //     setTimeout(updateShots, 1000);
+  //   });
 
-  };
-  setTimeout(updateShots, 1000);
+  // };
+  // setTimeout(updateShots, 1000);
 
 });
 
