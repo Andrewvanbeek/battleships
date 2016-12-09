@@ -6,6 +6,8 @@ $(document).on('ready page:load', function () {
       var x_coord = $shot.attr("value");
       var y_coord = $shot.closest("tr").attr("value");
       var data = {x_coord: x_coord, y_coord: y_coord};
+      console.log(x_coord)
+      console.log(y_coord)
 
       $.ajax({
         url: '/shots',

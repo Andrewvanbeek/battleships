@@ -1,8 +1,8 @@
 class ShotsController < ApplicationController
   def create
     if request.xhr?
-      @shot = Shot.create(x_coord: 4, y_coord: 4)
-     render json: { hey: "hello"
+      @shot = Shot.create(x_coord: params[:x_coord], x_coord: params[:y_coord])
+     render json: {
       }, status: 201
     end
   end
