@@ -41,10 +41,8 @@ class GamesController < ApplicationController
         @game.save
       end
     end
-    if request.xhr?
-      if @game.shots == 0
-        render json: { ready: @game.ready_to_start, player: @game.player1.username}, status: 201
-      elsif @game.who_fired_last == @game.player2
+    if request.xhr? && @game.player2
+      if @game.shots.count == 0 || @game.shots.who_fired_last == @game.player2
         render json: { ready: @game.ready_to_start, player: @game.player1.username}, status: 201
       else
         render json: { ready: @game.ready_to_start, player: @game.player2.username}, status: 201
