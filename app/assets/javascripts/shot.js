@@ -6,7 +6,7 @@ $(document).on('ready page:load', function () {
       data: {param1: 'value1'},
     })
     .fail(function() {
-      setTimeout(updateShots, 100);
+      setTimeout(updateShots, 10);
     })
     .done(function(data) {
       console.log(data.player)
@@ -29,7 +29,7 @@ $(document).on('ready page:load', function () {
       }) .fail(function() {
       }) .done(function(data) {
         $shot.addClass("miss");
-         setTimeout(updateShots, 1000)
+
       });
   })
 
@@ -39,11 +39,11 @@ $(document).on('ready page:load', function () {
 
       }
       console.log(data.ready)
-      setTimeout(updateShots, 1000);
+      setTimeout(updateShots, 10);
     });
 
   };
-  setTimeout(updateShots, 1000);
+  setTimeout(updateShots, 10);
 
 });
 

@@ -22,6 +22,24 @@ class Game < ActiveRecord::Base
     self.player2.ships.where(game_id: self.id)
   end
 
+  def player1_lost
+    shippys = self.player1_ships.find_all {|ship| ship.dead == true}
+    shippys.count >= 5
+  end
+
+  def player2_lost
+    shippys = self.player2_ships.find_all {|ship| ship.dead == true}
+    shippys.count >= 5
+  end
+
+  def game_over
+    if player1_lost
+      return true
+    elsif player2_lost
+      return true
+    end
+  end
+
   def ready_to_start
     self.player1_ships.length == 5 && self.player2_ships.length == 5
   end
