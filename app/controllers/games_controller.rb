@@ -41,11 +41,29 @@ class GamesController < ApplicationController
         @game.save
       end
     end
-    if request.xhr? && @game.player2
+    if request.xhr? && !@game.ready_to_join
       if @game.shots.count == 0 || @game.who_fired_last == @game.player2
-        render json: { ready: @game.ready_to_start, player: @game.player1.username, hit_ships: @game.player2_dead_ships}, status: 201
+
+        pl_ships = []
+        op_ships = []
+        pl_shots = []
+        op_shots = []
+        if @game.player1.id == session[:user_id]
+            pl_ships = @game.player1_ships
+            pl_shots = @game.player1.shots.where(game_id: @game.id)
+            op_ships = @game.player2_ships
+            op_shots = @game.player2.shots.where(game_id: @game.id)
+          end
+        elsif @game.player2.id == session[:user_id]
+            pl_ships = @game.player2_ships
+            pl_shots = @game.player2.shots.where(game_id: @game.id)
+            op_ships = @game.player1_ships
+            op_shots = @game.player1.shots.where(game_id: @game.id)
+        end
+
+        render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start ,player: @game.active_player, playerShots: pl_shots,opponentShots: op_shots} status: 201
       else
-        render json: { ready: @game.ready_to_start, player: @game.player2.username, hit_ships: @game.player1_dead_ships}, status: 201
+        status: 201
       end
     else
       render :show

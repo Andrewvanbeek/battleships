@@ -11,7 +11,7 @@ $(document).on('ready page:load', function () {
     .done(function(data) {
       console.log(data.player)
       if(data.ready === true && ($("#playername").attr("name") === data.player)){
-        console.log($("#playername").attr("name"))
+        console.log($("#playername").attr("name")) //leave for the user
         console.log("IT WAS TRUE")
         console.log(data.hit_ships)
      $("#opponent").one("click", ".space", function(e){
