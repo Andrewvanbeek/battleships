@@ -14,8 +14,9 @@ class ShipsController < ApplicationController
           @user.save
           # {ready: }
           render json: { not_ready: "yes"}, status: 201
+        else
+          render json: { not_ready: "yes"}, status: 200
         end
-        puts @ship.errors.full_messages
       end
     end
   end

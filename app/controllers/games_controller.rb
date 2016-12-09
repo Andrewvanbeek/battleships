@@ -33,7 +33,6 @@ class GamesController < ApplicationController
     @ship_1 = Ship.new
     @shot = Shot.new
     @game = Game.find(params[:id])
-
     if @game.ready_to_join
       @player2 = User.find(session[:user_id])
       if @player2 != @game.player1
@@ -42,7 +41,12 @@ class GamesController < ApplicationController
       end
 
     end
-    render :show
+    if request.xhr?
+      puts "HEY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      render json: { ready: @game.ready_to_start}, status: 201
+    else
+      render :show
+    end
   end
 
   private
@@ -51,3 +55,5 @@ class GamesController < ApplicationController
     params.require(:game).permit(:player1_id)
   end
 end
+
+
