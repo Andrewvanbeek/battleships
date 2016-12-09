@@ -79,5 +79,6 @@ class Game < ActiveRecord::Base
     else
       self.player1.username
     end
+  end
 end
 

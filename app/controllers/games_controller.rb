@@ -41,29 +41,33 @@ class GamesController < ApplicationController
         @game.save
       end
     end
-    if request.xhr? && !@game.ready_to_join
-      if @game.shots.count == 0 || @game.who_fired_last == @game.player2
-
+    if request.xhr?
         pl_ships = []
         op_ships = []
         pl_shots = []
         op_shots = []
+      if @game.ready_to_join
         if @game.player1.id == session[:user_id]
-            pl_ships = @game.player1_ships
-            pl_shots = @game.player1.shots.where(game_id: @game.id)
-            op_ships = @game.player2_ships
-            op_shots = @game.player2.shots.where(game_id: @game.id)
-          end
-        elsif @game.player2.id == session[:user_id]
-            pl_ships = @game.player2_ships
-            pl_shots = @game.player2.shots.where(game_id: @game.id)
-            op_ships = @game.player1_ships
-            op_shots = @game.player1.shots.where(game_id: @game.id)
+          player = @game.player1.username
+          pl_ships = @game.player1_ships
+          pl_shots = @game.player1.shots.where(game_id: @game.id)
         end
-
-        render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start ,player: @game.active_player, playerShots: pl_shots,opponentShots: op_shots} status: 201
+        render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start , player: player, activePlayer: @game.active_player, playerShots: pl_shots,opponentShots: op_shots}, status: 201
       else
-        status: 201
+        if @game.player1.id == session[:user_id]
+          player = @game.player1.username
+          pl_ships = @game.player1_ships
+          pl_shots = @game.player1.shots.where(game_id: @game.id)
+          op_ships = @game.player2_ships
+          op_shots = @game.player2.shots.where(game_id: @game.id)
+        elsif @game.player2.id == session[:user_id]
+          player = @game.player2.username
+          pl_ships = @game.player2_ships
+          pl_shots = @game.player2.shots.where(game_id: @game.id)
+          op_ships = @game.player1_ships
+          op_shots = @game.player1.shots.where(game_id: @game.id)
+        end
+        render json: { gameReady: !@game.ready_to_join, playerShips: pl_ships, opponentShips: op_ships, gameStart: @game.ready_to_start ,player: player, activePlayer: @game.active_player, playerShots: pl_shots,opponentShots: op_shots}, status: 201
       end
     else
       render :show
