@@ -30,4 +30,3 @@ class ShipsController < ApplicationController
 
 end
 
-

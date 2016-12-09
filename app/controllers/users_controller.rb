@@ -41,8 +41,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
-      redirect_to root_path
+    if session[:user_id] != params[:id].to_i
+      redirect_to new_session_path
+    else
+      if @user.destroy
+        session[:user_id] = nil
+        redirect_to root_path
+      end
     end
   end
 
