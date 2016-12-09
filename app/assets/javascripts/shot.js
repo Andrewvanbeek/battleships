@@ -11,9 +11,10 @@ $(document).on('ready page:load', function () {
     .done(function(data) {
       console.log(data.player)
       if(data.ready === true && ($("#playername").attr("name") === data.player)){
+        console.log($("#playername").attr("name"))
         console.log("IT WAS TRUE")
 
-         $("#opponent").on("click", ".space", function(e){
+         $("#opponent").one("click", ".space", function(e){
       e.preventDefault();
 
       var $shot = $(this);
