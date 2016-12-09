@@ -6,10 +6,6 @@ class GamesController < ApplicationController
 
   def new
     @ship_1 = Ship.new
-    # @ship_2 = Ship.new
-    # @ship_3 = Ship.new
-    # @ship_4 = Ship.new
-    # @ship_5 = Ship.new
     @shot = Shot.new
     @game = Game.new
 
@@ -44,6 +40,7 @@ class GamesController < ApplicationController
         @game.player2_id = @player2.id
         @game.save
       end
+
     end
     render :show
   end

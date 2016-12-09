@@ -40,7 +40,7 @@ $(document).on('ready page:load', function () {
 
   var updateShots = function () {
     $.ajax({
-      url: "/shots",
+      url: window.location.pathname,
       method: "GET",
       data: {param1: 'value1'},
     })
@@ -48,6 +48,7 @@ $(document).on('ready page:load', function () {
       setTimeout(updateShots, 100);
     })
     .done(function(data) {
+      console.log()
       $("#ok").text(data.hey)
       setTimeout(updateShots, 1000);
     });
