@@ -1,43 +1,51 @@
 class ShotsController < ApplicationController
   def create
     if request.xhr?
-      @user = User.find_by(id: session[:user_id])
-      @game = Game.find_by(id: params[:game_id])
-      @shot = Shot.create(shot_params)
-      p @shot
-      @game.shots << @shot
-      @user.shots << @shot
-      @game.save
-      @user.save
+      @user = User.find(session[:user_id])
+      @game = Game.find(params[:game_id])
+      @shot = Shot.new(shot_params)
+      @shot.user_id = @user.id
+      @shot.game_id = @game.id
+
       if @user == @game.player1
         @game.player2_ships.each do |ship|
-          if ship.x_coord == @shot.x_coord && ship.y_coord == @shot.y_coord
+
+          puts [ship.x_coord..(ship.x_coord + ship.size)]
+          puts [ship.x_coord..(ship.x_coord + ship.size)].include?(@shot.x_coord)
+          puts [ship.y_coord..(ship.y_coord + ship.size)].include?(@shot.y_coord)
+
+          if ship.x_coord == @shot.x_coord && ship.y_coord <= @shot.y_coord && (ship.y_coord + ship.size) >= @shot.y_coord
             ship.hit_count += 1
             ship.save
-            @shot.ship = ship
+            # @shot.ship = ship
             @shot.hit = true
-            @shot.save
+            if @shot.hit
+              @shot.save
+              break
+            end
+          else
+            @shot.hit = false
           end
         end
+        @shot.save
       elsif @user == @game.player2
         @game.player1_ships.each do |ship|
-          if ship.x_coord == @shot.x_coord && ship.y_coord == @shot.y_coord
+          if ship.x_coord == @shot.x_coord && ship.y_coord <= @shot.y_coord && (ship.y_coord + ship.size) >= @shot.y_coord
             ship.hit_count += 1
             ship.save
-            @shot.ship = ship
+            # @shot.ship = ship
             @shot.hit = true
-            @shot.save
+            if @shot.hit
+              @shot.save
+              break
+            end
+          else
+            @shot.hit = false
           end
+          @shot.save
         end
-      else
       end
-      if @user == @game.player1
-     render json: { hit_ships: @game.player2_dead_ships
-      }, status: 201
-    elsif @user == @game.player2
-        render json: { hit_ships: @game.player1_dead_ships
-      }, status: 201
-    end
+      status 200
     end
   end
 

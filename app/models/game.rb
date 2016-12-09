@@ -9,10 +9,8 @@ class Game < ActiveRecord::Base
   validates :player1_id, presence: true
 
   def ready_to_join
-    self.player1 && player2 == nil
+    self.player2 == nil
   end
-
-
 
   def player1_ships
     self.player1.ships.where(game_id: self.id)
@@ -68,10 +66,19 @@ class Game < ActiveRecord::Base
   end
 
   def who_fired_last
-    if self.shots.count > 0
-      self.shots.last.user
+    if !self.shots.empty?
+      self.shots.last.user.id
     end
   end
 
+  def active_player
+    if self.who_fired_last == self.player1_id
+      self.player2.username
+    elsif self.who_fired_last == nil
+      self.player1.username
+    else
+      self.player1.username
+    end
+  end
 end
 

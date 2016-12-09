@@ -10,11 +10,11 @@ table td {
 
 .hit {
 
-  background-color: green;
+  background-color: red;
 }
 
 .placer {
-background-color: red;
+background-color: green;
 }
 
 .perm-placer {
