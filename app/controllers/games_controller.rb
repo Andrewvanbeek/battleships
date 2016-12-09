@@ -42,7 +42,13 @@ class GamesController < ApplicationController
       end
     end
     if request.xhr?
-      render json: { ready: @game.ready_to_start, player1: @game.player1.username}, status: 201
+      if @game.shots == 0
+        render json: { ready: @game.ready_to_start, player: @game.player1.username}, status: 201
+      elsif @game.who_fired_last == @game.player2
+        render json: { ready: @game.ready_to_start, player: @game.player1.username}, status: 201
+      else
+        render json: { ready: @game.ready_to_start, player: @game.player2.username}, status: 201
+      end
     else
       render :show
     end
@@ -54,5 +60,7 @@ class GamesController < ApplicationController
     params.require(:game).permit(:player1_id)
   end
 end
+
+
 
 
