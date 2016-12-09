@@ -22,14 +22,21 @@ class Game < ActiveRecord::Base
     self.player2.ships.where(game_id: self.id)
   end
 
-  def player1_lost
+  def player1_dead_ships
     shippys = self.player1_ships.find_all {|ship| ship.dead == true}
-    shippys.count >= 5
+  end
+
+  def player1_lost
+    player1_dead_ships.count >= 5
+  end
+
+
+  def player2_dead_ships
+    shippys = self.player2_ships.find_all {|ship| ship.dead == true}
   end
 
   def player2_lost
-    shippys = self.player2_ships.find_all {|ship| ship.dead == true}
-    shippys.count >= 5
+    player2_dead_ships.count >= 5
   end
 
   def game_over

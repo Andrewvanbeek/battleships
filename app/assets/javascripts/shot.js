@@ -13,7 +13,7 @@ $(document).on('ready page:load', function () {
       if(data.ready === true && ($("#playername").attr("name") === data.player)){
         console.log($("#playername").attr("name"))
         console.log("IT WAS TRUE")
-
+        console.log(data.hit_ships)
          $("#opponent").one("click", ".space", function(e){
       e.preventDefault();
 
@@ -29,16 +29,21 @@ $(document).on('ready page:load', function () {
       }) .fail(function() {
       }) .done(function(data) {
         $shot.addClass("miss");
+         data.hit_ships.forEach(function(ship){
+          var Allrow = $("#opponent tr")
+          var good_coord = Math.floor(ship.x_coord)
+          var rowToUpdate = Allrow[good_coord]
+          var allSpots = $(rowToUpdate).find("td")
+          var right_coord = Math.floor(ship.y_coord)
 
+          var hitSpot = allSpots[right_coord]
+          console.log(hitSpot)
+          $(hitSpot).removeClass("miss")
+          $(hitSpot).addClass("hit")
+        })
       });
   })
-
-
-
-
-
       }
-      console.log(data.ready)
       setTimeout(updateShots, 10);
     });
 

@@ -30,8 +30,13 @@ class ShotsController < ApplicationController
         end
       else
       end
-     render json: { hey: "hello"
+      if @user == @game.player1
+     render json: { hit_ships: @game.player2_dead_ships
       }, status: 201
+    elsif @user == @game.player2
+        render json: { hit_ships: @game.player1_dead_ships
+      }, status: 201
+    end
     end
   end
 
