@@ -4,6 +4,7 @@ class ShotsController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       @game = Game.find_by(id: params[:game_id])
       @shot = Shot.create(shot_params)
+      p @shot
       @game.shots << @shot
       @user.shots << @shot
       @game.save

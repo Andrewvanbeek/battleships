@@ -14,7 +14,7 @@ $(document).on('ready page:load', function () {
         console.log($("#playername").attr("name"))
         console.log("IT WAS TRUE")
         console.log(data.hit_ships)
-         $("#opponent").one("click", ".space", function(e){
+     $("#opponent").one("click", ".space", function(e){
       e.preventDefault();
 
       var $shot = $(this);
@@ -41,6 +41,7 @@ $(document).on('ready page:load', function () {
           $(hitSpot).removeClass("miss")
           $(hitSpot).addClass("hit")
         })
+         setTimeout(updateShots, 10);
       });
   })
       }
