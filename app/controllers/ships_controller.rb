@@ -12,9 +12,11 @@ class ShipsController < ApplicationController
           @user.ships << @ship
           @game.save
           @user.save
-          render json: { hey: "hello"}, status: 201
+          # {ready: }
+          render json: { not_ready: "yes"}, status: 201
+        else
+          render json: { not_ready: "yes"}, status: 200
         end
-        puts @ship.errors.full_messages
       end
     end
   end
@@ -27,4 +29,5 @@ class ShipsController < ApplicationController
 
 
 end
+
 

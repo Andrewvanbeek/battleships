@@ -18,8 +18,6 @@
 
 $(document).on('ready page:load', function () {
 
-  // $.getScript("shot.js", function(){});
-
   // var updateShots = function () {
   //   $.ajax({
   //     url: "/shots",
@@ -31,6 +29,32 @@ $(document).on('ready page:load', function () {
   //   })
   //   .done(function(data) {
   //     $("#ok").text(data.hey)
+  //     setTimeout(updateShots, 1000);
+  //   });
+
+  // };
+  // setTimeout(updateShots, 1000);
+
+  // $.getScript("shot.js", function(){});
+
+
+  //     });
+  // })
+
+  // var updateShots = function () {
+  //   $.ajax({
+  //     url: window.location.pathname,
+  //     method: "GET",
+  //     data: {param1: 'value1'},
+  //   })
+  //   .fail(function() {
+  //     setTimeout(updateShots, 100);
+  //   })
+  //   .done(function(data) {
+  //     if(data.ready === true){
+  //       console.log("IT WAS TRUE")
+  //     }
+  //     console.log(data.ready)
   //     setTimeout(updateShots, 1000);
   //   });
 
@@ -67,7 +91,7 @@ $(document).on('ready page:load', function () {
           spot.nextUntil(endSpot).addClass("placer")
           var shipSize = $("#player .placer").length
           var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 5, classification: value}}
-          if(shipSize === 5){
+          if(size === 5){
             spot.on("dblclick", function(e){
               e.preventDefault();
               $.ajax({
@@ -108,7 +132,7 @@ $(document).on('ready page:load', function () {
       spot.nextUntil(endSpot).addClass("placer")
       var shipSize = $("#player .placer").length
       var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 4, classification: value}}
-      if(shipSize === 4){
+      if(size === 4){
         spot.on("dblclick", function(e){
           e.preventDefault();
           $.ajax({
@@ -149,7 +173,7 @@ $("#player td").on("click", function(e){
   spot.nextUntil(endSpot).addClass("placer")
   var shipSize = $("#player .placer").length
   var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 3, classification: value}}
-  if(shipSize === 3){
+  if(size === 3){
     spot.on("dblclick", function(e){
       e.preventDefault();
       $.ajax({
@@ -192,7 +216,7 @@ spot.addClass("placer")
 spot.nextUntil(endSpot).addClass("placer")
 var shipSize = $("#player .placer").length
 var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 3, classification: value}}
-if(shipSize === 3){
+if(size === 3){
 spot.on("dblclick", function(e){
   e.preventDefault();
   $.ajax({
@@ -236,7 +260,7 @@ else if(value === "destroyer") {
   spot.nextUntil(endSpot).addClass("placer")
   var shipSize = $("#player .placer").length
   var data = {ship: {x_coord: xCoord, y_coord: yCoord, size: 2, classification: value}}
-  if(shipSize === 2){
+  if(size === 2){
   spot.on("dblclick", function(e){
     e.preventDefault();
     $.ajax({

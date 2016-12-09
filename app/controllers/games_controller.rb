@@ -6,10 +6,6 @@ class GamesController < ApplicationController
 
   def new
     @ship_1 = Ship.new
-    # @ship_2 = Ship.new
-    # @ship_3 = Ship.new
-    # @ship_4 = Ship.new
-    # @ship_5 = Ship.new
     @shot = Shot.new
     @game = Game.new
 
@@ -34,10 +30,10 @@ class GamesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: session[:user_id])
     @ship_1 = Ship.new
     @shot = Shot.new
     @game = Game.find(params[:id])
-
     if @game.ready_to_join
       @player2 = User.find(session[:user_id])
       if @player2 != @game.player1
@@ -45,7 +41,17 @@ class GamesController < ApplicationController
         @game.save
       end
     end
-    render :show
+    if request.xhr?
+      if @game.shots == 0
+        render json: { ready: @game.ready_to_start, player: @game.player1.username}, status: 201
+      elsif @game.who_fired_last == @game.player2
+        render json: { ready: @game.ready_to_start, player: @game.player1.username}, status: 201
+      else
+        render json: { ready: @game.ready_to_start, player: @game.player2.username}, status: 201
+      end
+    else
+      render :show
+    end
   end
 
   private
@@ -54,3 +60,7 @@ class GamesController < ApplicationController
     params.require(:game).permit(:player1_id)
   end
 end
+
+
+
+

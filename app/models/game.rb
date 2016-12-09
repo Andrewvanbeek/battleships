@@ -42,4 +42,8 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def who_fired_last
+    self.shots.last.user
+  end
+
 end
