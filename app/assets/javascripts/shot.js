@@ -9,6 +9,7 @@ $(document).on('ready page:load', function () {
       setTimeout(updateShots, 100);
     })
     .done(function(data) {
+      console.log(data.player)
       if(data.ready === true && ($("#playername").attr("name") === data.player)){
         console.log("IT WAS TRUE")
 
@@ -18,15 +19,16 @@ $(document).on('ready page:load', function () {
       var $shot = $(this);
       var x_coord = $shot.attr("value");
       var y_coord = $shot.closest("tr").attr("value");
-      var data = {x_coord: x_coord, y_coord: y_coord};
+      var data = {shot: {x_coord: x_coord, y_coord: y_coord}};
 
       $.ajax({
-        url: '/shots',
+        url: window.location.pathname + '/shots',
         method: "POST",
         data: data
       }) .fail(function() {
       }) .done(function(data) {
         $shot.addClass("miss");
+         setTimeout(updateShots, 1000)
       });
   })
 
